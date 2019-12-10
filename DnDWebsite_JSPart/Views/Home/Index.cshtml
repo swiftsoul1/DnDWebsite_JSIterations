@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <div style="display:inline-block">
+        <p id="loadedTotal" style="display:inline-block"></p><p id="total" style="display:inline-block"></p>
+    </div>
+</div>
+
+
+
+
+@*Monster table*@
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>CR</th>
+            <th>link</th>
+            <th>Add</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="monsters"></tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="~/js/site.js"></script>
