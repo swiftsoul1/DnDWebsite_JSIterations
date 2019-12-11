@@ -1,17 +1,9 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
-// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-var uri = "http://www.dnd5eapi.co/api/monsters";
+﻿var uri = "http://www.dnd5eapi.co/api/monsters";
 let monsters = null;
 
 $(document).ready(function () {
     getData();
+    $("#pressed").text((0));
 });
 
 function getData() {
@@ -37,12 +29,12 @@ function getData() {
                 url: uri + '/' + i,
                 cache: false,
                 crossDomain: true,
-                success: function (data) {
+                success: function (data ) {
                 }
             }).then(function (data) {
                 htmlString = '<tr><td>' + data.name + '</td><td>' + data.challenge_rating +
                     '</td><td><a href="' + data.url + '">link</a></td>' +
-                    '<td><button onclick=add(' + data.name + ',' + data.challenge_rating + ')>+</button ></td ></tr > ';
+                    '<td><button onclick=add('+ data.index + ')>+</button ></td ></tr > ';
                 tBody.append($.parseHTML(htmlString));
                 loaded++;
                 $("#loadedTotal").text("Loaded: " + loaded + "/");
@@ -55,4 +47,31 @@ function getData() {
         }
     }
     );
+}
+
+
+function add(l) {
+
+    $.ajax({
+        type: "GET",
+        url: uri + '/' + l,
+        cache: false,
+        crossDomain: true,
+        success: function (data) {
+            var k = $("#pressed").text();
+            console.log(k);
+            document.getElementById("NPCs_" + k + "__Name").value = data.name;
+            document.getElementById("NPCs_" + k + "__CR").value = data.challenge_rating;
+            document.getElementById("NPCs_" + k + "__Weblink").value = data.url;
+            var p = $("#pressed").text();
+            p++;
+            if (p == 5) {
+                p = 0;
+            }
+            $("#pressed").text(p);
+            
+        }
+    });
+    
+    
 }

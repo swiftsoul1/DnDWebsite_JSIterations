@@ -1,34 +1,66 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model DnDWebsite_JSPart.Models.Encounter
 
-<div>
-    <div style="display:inline-block">
-        <p id="loadedTotal" style="display:inline-block"></p><p id="total" style="display:inline-block"></p>
+@*Input form*@
+    <div>
+        @using (Html.BeginForm("Create", "Encounter", FormMethod.Post))
+        {
+            <div>
+                @Html.LabelFor(model => model.Players)
+                @for (var i = 0; i < Model.Players.Count; i++)
+                {
+                    <p>level:  @Html.EditorFor(item => Model.Players[i].Level)</p>
+                }
+            </div>
+            <br/>
+            <div>
+                <p style="">@Html.LabelFor(model => model.NPCs)</p>
+                @for (var i = 0; i < Model.NPCs.Count; i++)
+                {
+                    @Html.EditorFor(item => Model.NPCs[i])
+                    <br/>
+
+                }
+            </div>
+
+            <input type="submit" value="Submit" />
+        }
     </div>
-</div>
-
-
 
 
 @*Monster table*@
-<table>
-    <thead>
-        <tr>
-            <th>name</th>
-            <th>CR</th>
-            <th>link</th>
-            <th>Add</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody id="monsters"></tbody>
-</table>
+<aside>
+<div>
+    <div style="display:inline-block">
+        <p id="loadedTotal" style="display:inline-block"></p><p id="total" style="display:inline-block"></p>
+        <p id="pressed"></p>
+    </div>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>CR</th>
+                <th>link</th>
+                <th>Add</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="monsters"></tbody>
+    </table>
+</div>
+</aside>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-<script src="~/js/site.js"></script>
+@section Scripts
+{
+    <script src="~/js/site.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ACarrion_JSpear_JWilson_JGuevara_GroupProject.Models
+namespace DnDWebsite_JSPart.Models
 {
     public class Monster
     {
@@ -17,7 +17,7 @@ namespace ACarrion_JSpear_JWilson_JGuevara_GroupProject.Models
         #region props
         public string Name { get; set; }
         public double CR { get; set; }
-        public int HP { get; set; }
+        public string Weblink { get; set; }
 
         //www.dnd5eapi/api/monsters/? - contains a list of all monsters and there associcated stats(.JSON)
         //in a later iteration i plan to pull that info and load it into the monster

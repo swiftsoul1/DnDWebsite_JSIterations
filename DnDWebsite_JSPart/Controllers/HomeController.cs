@@ -12,7 +12,20 @@ namespace DnDWebsite_JSPart.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+
+            return View(new Encounter());
+        }
+        [HttpPost]
+        public IActionResult Index(Encounter result)
+        {
+            result.ReadEncounter();
+            return View("EncountDetails", result);
+        }
+
+        public IActionResult EncountDetails(Encounter result)
+        {
+            //set up initative order here
+            return View(result);
         }
 
         public IActionResult Privacy()

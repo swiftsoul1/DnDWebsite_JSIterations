@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "EncountDetails";
+}
+@model Encounter
+<h1>Encounter Details</h1>
+<h3>@Html.DisplayFor(model => model.Difficulty)</h3>
+<div>
+    @Html.LabelFor(model => model.totalExp)<text>: </text>@Html.DisplayFor(model => model.totalExp)
+</div>
+<div>
+    @Html.LabelFor(model => model.adjustedExp)<text>: </text>@Html.DisplayFor(model => model.adjustedExp)
+</div>
+<div>
+@Html.LabelFor(model => model.Players)
+@for (var i = 0; i < Model.Players.Count; i++)
+{
+    <p>level:  @Html.DisplayFor(item => Model.Players[i].Level)</p>
+}
+</div>
+<div>
+    @Html.LabelFor(model => model.NPCs)
+    <br />
+    @for (var i = 0; i < Model.NPCs.Count; i++)
+    {
+        @Html.DisplayFor(item => Model.NPCs[i].Name)
+        <text>  </text>
+        @Html.DisplayFor(item => Model.NPCs[i].CR)
+        <text>  </text>
+        @Html.DisplayFor(item => Model.NPCs[i].Weblink)
+        <br />
+    }
+</div>
