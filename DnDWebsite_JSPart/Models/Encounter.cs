@@ -197,6 +197,7 @@ namespace DnDWebsite_JSPart.Models
                     }
                 }
                 #endregion
+
                 if (emptyCount > 1)
                 {
                     adjustedExp = totalExp + (totalExp * .5);

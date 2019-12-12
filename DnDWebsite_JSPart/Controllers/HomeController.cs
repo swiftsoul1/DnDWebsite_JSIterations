@@ -28,7 +28,7 @@ namespace DnDWebsite_JSPart.Controllers
             return View(result);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Chat()
         {
             return View();
         }
